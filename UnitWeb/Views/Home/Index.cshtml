@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Unit Conversion";
+}
+
+<h2>Unit Conversion</h2>
+
+@using (Html.BeginForm("Convert", "Home", FormMethod.Post))
+{
+    <div>
+        <label for="fromUnit">From Unit:</label>
+        @Html.DropDownList("fromUnit", new List<SelectListItem>
+        {
+            new SelectListItem { Text = "meters", Value = "meters" },
+            new SelectListItem { Text = "kilometers", Value = "kilometers" },
+            new SelectListItem { Text = "feet", Value = "feet" },
+            new SelectListItem { Text = "miles", Value = "miles" },
+            new SelectListItem { Text = "kilograms", Value = "kilograms" },
+            new SelectListItem { Text = "grams", Value = "grams" },
+            new SelectListItem { Text = "pounds", Value = "pounds" }
+        }, "Select Unit", new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label for="toUnit">To Unit:</label>
+        @Html.DropDownList("toUnit", new List<SelectListItem>
+        {
+            new SelectListItem { Text = "meters", Value = "meters" },
+new SelectListItem { Text = "kilometers", Value = "kilometers" },
+new SelectListItem { Text = "feet", Value = "feet" },
+new SelectListItem { Text = "miles", Value = "miles" },
+new SelectListItem { Text = "kilograms", Value = "kilograms" },
+new SelectListItem { Text = "grams", Value = "grams" },
+new SelectListItem { Text = "pounds", Value = "pounds" }
+   }, "Select Unit", new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label for="value">Value:</label>
+        @Html.TextBox("value", "", new { @class = "form-control" })
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Convert</button>
+    </div>
+}
+
+<div id="result" style="margin-top: 20px;">
+    @if (ViewBag.Result != null)
+    {
+        <p><strong>Converted Value:</strong> @ViewBag.Result</p>
+    }
+</div>
